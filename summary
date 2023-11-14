@@ -8,6 +8,22 @@
 
   ## 1. Motor Driver
   </summary>
+  The motor driver is an intergrated circuit (IC) called the MX1508, inside the chip are 2 H-brigdes which can be used to control a dc motor each.
+  
+  "Yeah that's great Tonderai but what is a H-bridge?"
+  
+  Lets start of with the building blocks of said H-bridge, the humble MOSFET.
+  A Metal-Oxide-Semiconductor Field-Effect transistor A.K.A a MOSPHET is allows you to switch higher power signals with miniscule amounts of current.
+  Why is that important?
+    The GPIO pins on the ESP32 are rated for 40mA of current at a maximum 3.6V, leaving us with a grand total of 0.144W (P= IV = 40(10^-3) * 3.6 = 0.144W) of power which isn't a lot, and that's IF! we are pushing the limits anyfurther .
+    So we need a more potent external power source that we can plug into our motors for more torque and consequently more force!, this is where your batteries come in, each team is assigned 5 AA Nickel-metal hydride batteries (NIMH).
+    Boasting a nominal voltage of 1.2V (6V in series) and a max current draw of 5A, means you have 30W from the battries instead of a measly 0.144W from the ESP32 pins, thats more than 200 times the power you can put into your motors now.
+    However if you plug a 6V battery into you motors, they will just spin at a constant speed, because there's nothing controlling them.
+    This! is why switching capabilties of the MOSFETs are important, that aforementioned 40mA of current (line 18) then becomes the 'miniscule' current mentioned in line 16 while the higher power that we're switching with our MOSFETs is the battery power.
+
+    In short the MOSFETs allow us to manipulate and control higher levels of power with lower levels of power, acting as a relay or a power amplifier
+  
+      
 
 
 ---
